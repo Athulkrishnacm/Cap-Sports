@@ -1,0 +1,47 @@
+<%- include("../layouts/adminHeader.ejs")  %>
+<div style="padding-right: 20%;">
+<div class="container mt-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <a href="/admin/dashboard">Go to Home</a>
+        <a style="padding-left: 50%;" href="/admin/add-banner">Add New Banner</a>
+       
+            <% if (banners.length> 0) {
+                 for(let i=0;i<banners.length;i++){ %>
+
+                <tr>
+                 
+                  <th scope="row"><%= i+1 %></th>
+                 
+                  <td>
+                    <%= banners[i].Titile%>
+                  </td>
+                  <td>
+                    <%= banners[i].Description%>
+                  </td>
+                  <td>
+                   <img src="/Images/<%= banners[i].Images%>" alt="<%= banners[i].Images%>" width="80px" height="80px" > 
+                  </td>
+                 
+                    <td>
+                    <a class="btn btn-danger" href="/admin/access?id=<%= banners[i]._id%>&access=false" >Delete</a>
+                    </td>
+                    
+                  
+               <% }%>
+            <%}%>   
+          </tbody>
+    </table>
+  </div>
+</div>
+
+  <%- include("../layouts/adminFooter.ejs")  %>

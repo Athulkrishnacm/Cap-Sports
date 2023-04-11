@@ -1,0 +1,283 @@
+<%-include("../layouts/userHeader") %>
+
+
+
+
+  <!--================Home Banner Area =================-->
+  <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>Cart Products</h2>
+              <p>Home <span>-</span>Cart Products</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+
+  <!--================Cart Area =================-->
+  <section class="cart_area padding_top">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Images</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <% if(typeof cartproduct !=='undefined'?cartproduct :''){ for(let i=0;i<cartproduct.length;i++){%>
+                  <tr>
+                    <td> 
+                        <img src="/images/<%=cartproduct[i].productId.Images[i]%>" width="60px" alt="" />
+                    </td>
+                    <td>
+                      <%= cartproduct[i].productId.Name%>
+                    </td>
+                    <td>
+                      <h5>
+                        <%= cartproduct[i].productId.Price %>
+                      </h5>
+                    </td>
+                    <td>
+                      <div class="product_count">
+                        <%= cartproduct[i].productId.quantity %>
+                        <span onclick="changeqnty('<%= cartData.userId %>','<%= cartproduct[i].productId._id %>','<%= cartproduct[i].productId.SalePrice %>','<%= cartproduct[i]._id %>',-1)"  class="input-number-decrement"> <i class="ti-angle-down"></i></span>
+                        <input class="input-number" type="text" value="<%= cartproduct[i].quantity %>" min="0" id="<%= cartproduct[i].productId._id %>" readonly>
+                        <span onclick="changeqnty('<%= cartData.userId %>','<%= cartproduct[i].productId._id %>','<%= cartproduct[i].productId.SalePrice %>','<%= cartproduct[i]._id %>',1)" class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                       
+                    </td>
+                    
+                    <td>
+                      <h5 id="<%= cartproduct[i]._id %>">
+                        <%= cartproduct[i].totalSalePrice %>
+                      </h5>
+                    </td>
+
+                    <td>
+                      <h5>
+                        <a href="/cart-delete?id=<%= cartproduct[i].productId._id %>">Remove</a>
+                      </h5>
+                    </td>
+                    <td>
+                      <% if(cartproduct[i].deleteCart==true) { %>
+                        <a href="&deleteCart==true">Delete</a>"
+                      <%}%>
+                      </td>
+
+                  </tr>
+                  <%}}else{ %>
+                    <h3 style="padding-left: 36%;">Cart is empty</h3>
+                  <% }%>
+                    
+                      
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <h5>Subtotal</h5>
+                        </td>
+                        <td>
+                          <h5>₹<span id="TotalCart"><%= typeof totalPrice !=="undefined" ? totalPrice : '   ' %></span></h5>
+                        </td>
+                      </tr>
+                      
+
+            </tbody>
+          </table>
+          <div class="checkout_btn_inner float-right">
+            <a class="btn_1" href="productcategory">Continue Shopping</a>
+           
+            <a class="btn_1 checkout_btn_1" href="/checkout">Proceed to checkout</a>
+            
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  
+  <%if(mes!=null){%>
+    <script>
+      
+  swal({
+      title: " Product added to cart!",
+      text: "<%= mes %>",
+      icon: "success",
+      button: "Aww yess!",
+    });
+  
+  
+
+  </script>
+  <%}%>
+
+
+
+  <!--================End Cart Area =================-->
+
+  <!--::footer_part start::-->
+  <footer class="footer_part">
+    <div class="container">
+      <div class="row justify-content-around">
+        <div class="col-sm-6 col-lg-2">
+          <div class="single_footer_part">
+            <h4>Top Products</h4>
+            <ul class="list-unstyled">
+              <li><a href="">Managed Website</a></li>
+              <li><a href="">Manage Reputation</a></li>
+              <li><a href="">Power Tools</a></li>
+              <li><a href="">Marketing Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <div class="single_footer_part">
+            <h4>Quick Links</h4>
+            <ul class="list-unstyled">
+              <li><a href="">Jobs</a></li>
+              <li><a href="">Brand Assets</a></li>
+              <li><a href="">Investor Relations</a></li>
+              <li><a href="">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <div class="single_footer_part">
+            <h4>Features</h4>
+            <ul class="list-unstyled">
+              <li><a href="">Jobs</a></li>
+              <li><a href="">Brand Assets</a></li>
+              <li><a href="">Investor Relations</a></li>
+              <li><a href="">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <div class="single_footer_part">
+            <h4>Resources</h4>
+            <ul class="list-unstyled">
+              <li><a href="">Guides</a></li>
+              <li><a href="">Research</a></li>
+              <li><a href="">Experts</a></li>
+              <li><a href="">Agencies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="single_footer_part">
+            <h4>Newsletter</h4>
+            <p>Heaven fruitful doesn't over lesser in days. Appear creeping
+            </p>
+            <div id="mc_embed_signup">
+              <form target="_blank"
+                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                method="get" class="subscribe_form relative mail_part">
+                <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                  class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                  onblur="this.placeholder = ' Email Address '">
+                <button type="submit" name="submit" id="newsletter-submit"
+                  class="email_icon newsletter-submit button-contactForm">subscribe</button>
+                <div class="mt-10 info"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="copyright_part">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="copyright_text">
+              
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="footer_icon social_icon">
+              <ul class="list-unstyled">
+                <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
+                <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--::footer_part end::-->
+
+<script>
+  function changeqnty(userCart, productId, salePrice, id, quantity) {
+    console.log(quantity)
+            $.ajax({
+                type: "POST",
+                url: '/changeQuantity',
+                data: {
+                    userData: userCart,
+                    productId: productId,
+                    quantity: quantity,
+                    salePrice: salePrice,
+                    id: id
+                },
+                success: (response) => {
+                    if (response.success) {
+                        let value = document.getElementById(productId).value
+                        document.getElementById(productId).value = Number(value) + 1
+                        let total = document.getElementById(id).innerHTML
+                        document.getElementById(id).innerHTML = Number(total) + Number(salePrice)
+                        let TotalPrice = document.getElementById("TotalCart").innerHTML
+                        document.getElementById("TotalCart").innerHTML = (Number(TotalPrice) + Number(salePrice)).toFixed(2);
+                    } else if (response.success == false) {
+                        let value = document.getElementById(productId).value
+                        document.getElementById(productId).value = Number(value) - 1
+                        let total = document.getElementById(id).innerHTML
+                        document.getElementById(id).innerHTML = Number(total) - Number(salePrice)
+                        let TotalPrice = document.getElementById("TotalCart").innerHTML
+                        document.getElementById("TotalCart").innerHTML = (Number(TotalPrice) - Number(salePrice)).toFixed(2);
+
+                    } else {
+                        if (response.negative) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Quantity cannot be decreased below 1.'
+                            })
+                        }
+                    }
+                },
+            })
+        }
+        </script>
+
+
+
+
+
+  <%-include("../layouts/userFooter") %>

@@ -1,0 +1,16 @@
+<%- include('../layouts/registerHeader.ejs') %>
+
+<h1>forget password</h1>
+
+<%  if (typeof message !== 'undefined') { %>
+    <h4><%= message %></h4> <%  } %>
+
+    <form action="/forget-password" method="post">
+        <input type="email" name="email" required placeholder="Enter email" >
+        <br><br>
+       <input type="Submit" value="Send Reset Link">
+      
+      </form>
+      <a href="/forget">Forget Password</a>
+
+<%- include('../layouts/registerFooter.ejs') %>

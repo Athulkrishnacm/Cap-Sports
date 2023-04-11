@@ -1,0 +1,54 @@
+
+<%- include('../layouts/adminHeader.ejs') %>
+
+
+
+<div class="container border">
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Code</th>
+            <th scope="col">Type</th>
+            <th scope="col">Value</th>
+            <th scope="col">MinOrderValue</th>
+            <th scope="col">MaxDiscount</th>
+            <th scope="col">Status</th>
+            <th scope="col">ExpiryDate</th>
+          </tr>
+        </thead>
+        <tbody>
+           <% for(let i = 0;i<coupons.length; i++) {%>
+          <tr>
+        
+            <th scope="row"><%= i+1 %></th>
+            <td><%= coupons[i].Code%></td>
+            <td><%= coupons[i].Type%></td>
+            <td><%= coupons[i].Value%></td>
+            <td><%= coupons[i].MinOrdervalue%></td>
+            <td><%= coupons[i].MaxDiscount%></td>
+            <td>
+
+              <% if(coupons[i].Status==false){%>
+                <p class="text-danger">UnActive</p>
+                <% } else {%>
+                <p class="text-success">Active</p>
+                 <%}%>
+            </td>
+            <td><%= coupons[i].Expiry.toISOString().substring(0,10)%></td>
+            <td>
+               <% if(coupons[i].couponaccess==true){%>
+                <a class="btn btn-success" href="/admin/couponaccess?id=<%= coupons[i]._id%>&couponaccess=false">UnBLOCK</a>
+               <%}else{%>
+                <a class="btn btn-danger" href="/admin/couponaccess?id=<%= coupons[i]._id%>&couponaccess=true">BLOCK</a>
+               <%}%>
+            </td>
+          </tr>
+        <%}%>
+        </tbody>
+      </table>
+     
+    </div>
+    
+    <%- include('../layouts/adminFooter.ejs') %>

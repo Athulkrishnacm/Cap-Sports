@@ -1,0 +1,203 @@
+<%- include('../layouts/adminHeader.ejs') %>
+
+  <!-- <div class="container mt-5"> 
+    <div class="row justify-content-center bg-gray-dark">
+        <div class="col-lg-10 mb-3">
+        
+            <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
+                <div class="col-md-3">
+                    <label for="productName" class="form-label" >Product Name</label>
+                    <input type="text" class="form-control" id="productName" name="productName"
+                        placeholder="product name" value=""> 
+                </div>
+                <div class="col-md-3">
+                    <label for="skuCode" class="form-label">SKU code</label>
+                    <input type="text" class="form-control" id="skuCode" name="skuCode" placeholder="product code">
+                </div>
+                
+                <div class="col-md-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" id="category" name="category">
+                        <option selected disabled value="">Choose...</option>
+                        
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="for" class="form-label">For</label>
+                    <select class="form-select" id="for" name="gender">
+                        <option selected disabled value="">Choose...</option>
+                        <option>Men</option>
+                        <option>Women</option>
+                    </select>
+                </div>
+               
+                <div class="col-md-3">
+                    <label for="salePrice" class="form-label">Sale Price</label>
+                    <input type="text" class="form-control" id="salePrice" name="salePrice"
+                        placeholder="discount price">
+                </div>
+                <div class="col-md-3">
+                    <label for="discount" class="form-label">Discount</label>
+                    <input type="text" class="form-control" id="discount" name="discount"
+                        placeholder="discount in percentage">
+                </div>
+                <div class="col-md-3">
+                    <label for="quantity" class="form-label">quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity"
+                        placeholder="Number of quantity">
+                </div>
+                <div class="col-md-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status">
+                        <option selected disabled>Choose...</option>
+                        <option value="Available">Available</option>
+                        <option value="Not Available">Not Available</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" rows="3" name="description"
+                        placeholder="more about product..."></textarea>
+                </div>
+                <div class="mb-3 mx-3">
+                    <label for="imageMultiple" class="form-label">Images Upload</label>
+                    <input class="form-control" type="file" id="imageMultiple" name="images" multiple>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cap sports</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../../assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+  </head>
+
+  <body>
+
+   <div class="container">
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <a href="/admin/dashboard" style="padding-left: 90%;">Go to Home</a>
+          <h4 class="card-title">Add Products</h4>
+          <p class="card-description"></p>
+          <p class="text-danger text-center">
+            <%= typeof nameField !=='undefined' ? nameField: " " %>
+          </p>
+          <form  class="forms-sample" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+              <label for="exampleInputName1">Product Name</label>
+              <input type="text" class="form-control" name="Name" id="productName" placeholder="Product Name" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail3">SKU code</label>
+              <input type="text" class="form-control" name="SKUcode" id="exampleInputEmail3" placeholder="SKU code"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label for="category" class="form-label">Category</label>
+              <select class="form-select" id="category" name="category" >
+
+                  <option selected disabled value="" >Choose...</option>
+                  <% category.forEach((category)=>{ %>
+                    <option  value="<%= category.CategoryName %>"><%= category.CategoryName %></option>
+                    <% }) %>
+              </select required>
+          </div>
+
+            <div class="mb-3 mx-3">
+              <label for="imageMultiple" class="form-label">Images Upload</label>
+              <input class="form-control" required type="file" id="imageMultiple" name="images" multiple>
+            </div>
+            <div class="col-md-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="text" class="form-control" id="price" name="price" placeholder="price include all taxes"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label for="salePrice" class="form-label">Sale Price</label>
+              <input type="text" class="form-control" id="salePrice" name="salePrice" placeholder="discount price"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label for="discount" class="form-label">Discount</label>
+              <input type="text" class="form-control" id="discount" name="discount"
+                placeholder="discount in percentage">
+            </div>
+            <div class="col-md-3">
+              <label for="quantity" class="form-label">quantity</label>
+              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Number of quantity"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleTextarea1">Description</label>
+              <textarea name="description" class="form-control" id="exampleTextarea1" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit">Submit</button>  
+            </div>
+            
+
+          </form>
+          <button class="btn btn-dark">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+   
+    <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/select2/select2.min.js"></script>
+    <script src="../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <script src="../../assets/js/typeahead.js"></script>
+    <script src="../../assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+
+  </html>
+
+  <%- include('../layouts/adminFooter.ejs') %>

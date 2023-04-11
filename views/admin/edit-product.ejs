@@ -1,0 +1,138 @@
+<%- include('../layouts/adminHeader.ejs') %>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cap sports</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../../assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+  </head>
+
+  <body>
+
+   <div class="container">
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <a href="/admin/dashboard" style="padding-left: 90%;">Go to Home</a>
+          <h4 class="card-title">Edit Products</h4>
+          <p class="card-description"></p>
+          <p class="text-danger text-center">
+            <%= typeof nameField !=='undefined' ? nameField: " " %>
+          </p>
+          <form    class="forms-sample"  method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="exampleInputName1">Product Name</label>
+              <input type="text" value="<%= editp.Name%>" class="form-control" name="Name" id="productName" placeholder="Product Name" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail3">SKU code</label>
+              <input type="text" value="<%= editp.SKU%>" class="form-control" name="SKUcode" id="exampleInputEmail3" placeholder="SKU code"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label for="category" class="form-label">Category</label>
+              <select class="form-select" id="category" name="category" >
+
+                  <option selected disabled value="" >Choose...</option>
+                  <% category.forEach((category)=>{ %>
+                    <option value="<%= editp.Category%>"  value="<%= category.CategoryName %>"><%= category.CategoryName %></option>
+                    <% }) %>
+              </select required>
+          </div>
+            
+            <% for(let i=0;i<editp.Images.length;i++){ %>
+          <img src="/Images/<%= editp.Images[i]%>" alt="" width="80px">
+          <a href="/admin/edit-productimg?id=<%= editp.Images[i]%>&productid=<%= editp._id %>" >delete</a>
+          <%}%>
+        
+            <div class="mb-3 mx-3">
+              <label for="imageMultiple" class="form-label">Images Upload</label>
+              <input class="form-control" value="<%= editp.Images%>"  type="file" id="imageMultiple" name="images" multiple>
+            </div>
+
+          
+
+           <div class="col-md-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="text" value="<%= editp.Price%>" class="form-control" id="price" name="price" placeholder="price include all taxes"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label for="salePrice" class="form-label">Sale Price</label>
+              <input type="text" value="<%= editp.SalePrice%>" class="form-control" id="salePrice" name="salePrice" placeholder="discount price"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label for="discount" class="form-label">Discount</label>
+              <input type="text" value="<%= editp.Discount%>" class="form-control" id="discount" name="discount"
+                placeholder="discount in percentage">
+            </div>
+            <div class="col-md-3">
+              <label for="quantity" class="form-label">quantity</label>
+              <input type="number" value="<%= editp.Stock%>" class="form-control" id="quantity" name="quantity" placeholder="Number of quantity"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleTextarea1">Description</label>
+              <textarea name="description" value="<%= editp.Description%>" class="form-control" id="exampleTextarea1" rows="4" ></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit">Submit</button>  
+            </div>
+            
+
+          </form>
+          <button class="btn btn-dark">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+   
+    <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/select2/select2.min.js"></script>
+    <script src="../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <script src="../../assets/js/typeahead.js"></script>
+    <script src="../../assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+
+  </html>
+
+  <%- include('../layouts/adminFooter.ejs') %>

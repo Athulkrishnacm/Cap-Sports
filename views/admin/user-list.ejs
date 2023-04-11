@@ -1,0 +1,212 @@
+<%- include("../layouts/adminHeader.ejs") %>
+  <div class="container mt-5">
+    <form action="/admin/search-user" class="form-inline my-2 my-lg-0 d-flex flex-row ms-auto">
+      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <table class="table table-bordered" id="reloadDiv">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody >
+        <a href="/admin/dashboard">Go to Home</a>
+
+        <% if (users.length> 0) { for(let i=0;i<users.length;i++){ %>
+            <tr>
+                <th scope="row"><%= i+1 %></th>
+              <td>
+                <%= users[i].name %>
+              </td>
+              <td>
+                <%= users[i].email %>
+              </td>
+              <td>
+                <%= users[i].mobile %>
+              </td>
+              <td>
+                <% if(users[i].access==true){ %>
+                  <p class="text-success">Active</p>
+                  <% }else{ %>
+                  <p class="text-danger">Blocked</p>
+                  <% } %>
+              </td>
+              <td>
+                <% if(users[i].access==true){ %>
+                  <button class="btn btn-success " onclick="blockuser('<%= users[i]._id %>','false')">BLOCK</button>
+                  <% }else{ %>
+                     <button class="btn btn-danger" onclick="unblockuser('<%= users[i]._id %>','true')">UNBLOCK</button>
+                    <% } %>
+              </td>
+            </tr>
+            <% }} else{ %>
+              <tr>
+                <td colspan="5">Users not found</td>
+              </tr>
+              <% } %>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- //////////////toster alert///////////////////// -->
+
+
+  <script>
+
+    function blockuser(userlist,action) {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You wan't to block!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'yes, block!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/admin/access-user",
+                    data: {
+                        userid : userlist,
+                        action : action
+                    },
+                    method: 'post',
+                    success: (response) => {
+                        console.log("waoring")
+
+                        $('#reloadDiv').load('/admin/user-list #reloadDiv')
+                        console.log(response);
+                        Swal.fire({
+                            title: 'deleted!',
+                            text: 'user blocked',
+                            icon: 'success',
+                            showConfirmButton: false
+                        })
+                        //  setTimeout(()=>{
+                        //     location.reload()
+                        //  },1000);
+
+                    }
+
+                })
+            }
+        })
+    }
+
+    function addToCart(proid) {
+
+        $.ajax({
+            url: "/add_to_cart",
+            data: {
+                productId: proid
+            },
+            method: 'post',
+            success: (response) => {
+                console.log("waoring")
+
+                $('#reloadDiv').load('/wishlist #reloadDiv')
+                console.log(response);
+                Swal.fire({
+                    title: 'added',
+                    text: 'iteam in your cart ',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+                //  setTimeout(()=>{
+                //     location.reload()
+                //  },1000);
+
+            }
+
+        })
+    }
+    
+
+
+
+    
+    function unblockuser(userlist,action) {
+
+Swal.fire({
+    title: 'Are you sure?',
+    text: "You wan't to unblock!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'yes, unblocked!'
+}).then((result) => {
+    if (result.isConfirmed) {
+        $.ajax({
+            url: "/admin/access-user",
+            data: {
+                userid : userlist,
+                action : action
+            },
+            method: 'post',
+            success: (response) => {
+                console.log("waoring")
+
+                $('#reloadDiv').load('/admin/user-list #reloadDiv')
+                console.log(response);
+                Swal.fire({
+                    title: 'deleted!',
+                    text: 'user unblocked',
+                    icon: 'success',
+                    showConfirmButton: false
+                })
+                //  setTimeout(()=>{
+                //     location.reload()
+                //  },1000);
+
+            }
+
+        })
+    }
+})
+}
+
+function addToCart(proid) {
+
+$.ajax({
+    url: "/add_to_cart",
+    data: {
+        productId: proid
+    },
+    method: 'post',
+    success: (response) => {
+        console.log("waoring")
+
+        $('#reloadDiv').load('/wishlist #reloadDiv')
+        console.log(response);
+        Swal.fire({
+            title: 'added',
+            text: 'iteam in your cart ',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1000
+        })
+        //  setTimeout(()=>{
+        //     location.reload()
+        //  },1000);
+
+    }
+
+})
+}
+
+
+</script>
+
+
+
+  <%- include("../layouts/adminFooter.ejs") %>

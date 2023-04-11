@@ -1,0 +1,55 @@
+<%- include("../layouts/adminHeader.ejs") %>
+
+  
+  <div class="container-fluid col-lg-9 ">
+    
+    <a class="btn btn-primary" href="/admin/dashboard" style="margin-left: 10%;">Go to Home</a>
+    <a class="btn btn-primary " href="/admin/add-category" style="margin-left: 60%;">Add category</a>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Category Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (category && category.length> 0) { %>
+          <% for (var i=0; i < category.length; i++) { %>
+
+
+            <tr>
+              
+                <th scope="row"><%= i+1 %></th>
+                
+              <td>
+                <%= category[i].CategoryName %>
+              </td>
+
+
+
+              <td>
+                <% if(category[i].id_disablec==false) {%>
+                  <a href="/admin/id_disablec?id=<%= category[i]._id%>&id_disablec=false" class="btn btn-danger">Block</a>
+                  <%}else{%>
+                    <a href="/admin/id_undisablec?id=<%= category[i]._id%>&id_disablec=true"
+                      class="btn btn-success">Unblock</a>
+                    <% } %>
+                       
+                    <a class="btn btn-outline-success" href="/admin/edit-category?id=<%= category[i]._id%>" >Edit</a>
+              </td>
+            </tr>
+            <% }} %>
+
+      </tbody>
+
+
+
+    </table>
+
+
+  </div>
+
+
+
+  <%- include("../layouts/adminFooter.ejs") %>

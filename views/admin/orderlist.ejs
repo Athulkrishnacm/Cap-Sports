@@ -1,0 +1,59 @@
+
+<%- include('../layouts/adminHeader.ejs') %>
+
+
+<div class="container border">
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Products</th>
+            <th scope="col">Date</th>
+            <th scope="col">Payment method</th>
+            <th scope="col">total</th>
+            <th scope="col">Status</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+           <% for(let i = 0;i<orders.length; i++) {%>
+          <tr>
+        
+            <th scope="row"><%= i+1 %></th>
+            <td><%= orders[i]._id%></td>
+            <td><%= orders[i].date.toISOString().substring(0,10)%></td>
+            <td><%= orders[i].paymentMethod%></td>
+            <td><%= orders[i].cartTotal%></td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+                        <%= orders[i].status%>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="/admin/updateorderlist?id=<%= orders[i]._id%>&value=Placed">Placed</a></li>
+                      <li><a class="dropdown-item" href="/admin/updateorderlist?id=<%= orders[i]._id%>&value=shipped">Shipped</a></li>
+                      <li><a class="dropdown-item" href="/admin/updateorderlist?id=<%= orders[i]._id%>&value=Delivered">Delivered</a></li>
+                      <li><a class="dropdown-item" href="/admin/updateorderlist?id=<%= orders[i]._id%>&value=Cancelled">Cancelled</a></li>
+                    </ul>
+                  </div>
+            </td>
+
+           
+            
+              
+
+
+          </tr>
+        <%}%>
+        </tbody>
+      </table>
+     
+    </div>
+
+    <script>
+ 
+    </script>
+
+    
+    <%- include('../layouts/adminFooter.ejs') %>

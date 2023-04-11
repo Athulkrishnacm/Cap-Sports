@@ -1,0 +1,431 @@
+<%- include("../layouts/adminHeader.ejs") %>
+
+
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <ul class="navbar-nav w-100">
+              <li class="nav-item w-100">
+                
+           
+
+            
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+              <!-- <li class="nav-item dropdown d-none d-lg-block">
+                 <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a> 
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+                 
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-file-outline text-primary"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Software Development</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-web text-info"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">UI Development</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-layers text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center">See all projects</p>
+                </div>
+              </li> -->
+              <!-- <li class="nav-item nav-settings d-none d-lg-block">
+                <a class="nav-link" href="#">
+                  <i class="mdi mdi-view-grid"></i>
+                </a>
+              </li> -->
+              <li class="nav-item dropdown border-left">
+                
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                 
+                
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      
+                    </div>
+                    
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="/assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
+                      <p class="text-muted mb-0"> 15 Minutes ago </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="/assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
+                      <p class="text-muted mb-0"> 18 Minutes ago </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center">4 new messages</p>
+                </div>
+              </li>
+              <!-- <li class="nav-item dropdown border-left">
+                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                  <i class="mdi mdi-bell"></i>
+                  <span class="count bg-danger"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                  <h6 class="p-3 mb-0">Notifications</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-calendar text-success"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Event today</p>
+                      <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-settings text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Settings</p>
+                      <p class="text-muted ellipsis mb-0"> Update dashboard </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-link-variant text-warning"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Launch Admin</p>
+                      <p class="text-muted ellipsis mb-0"> New admin wow! </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center ">See all notifications</p>
+                </div>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                  <div class="navbar-profile">
+                    <img class="img-xs rounded-circle" src="/assets/images/faces/adminlogcap.png" alt="">
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">ADMIN</p>
+                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                  <h6 class="p-3 mb-0">Profile</h6>
+                  <div class="dropdown-divider"></div>
+                 
+                  <div class="dropdown-divider"></div>
+                  <a  href="/admin/logout" class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-logout text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Log out</p>
+                    </div>
+                  </a>
+                  
+              </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card corona-gradient-card">
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <!-- <div class="col-4 col-sm-3 col-xl-2">
+                        <img src="/assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
+                      </div> -->
+                      <!-- <div class="col-5 col-sm-7 col-xl-8 p-0">
+                        <h4 class="mb-1 mb-sm-0">Want even more features?</h4>
+                        <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version with 5 unique layouts!</p>
+                      </div>
+                      <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
+                        <span>
+                          <a href="https://www.bootstrapdash.com/product/corona-admin-template/" target="_blank" class="btn btn-outline-light btn-rounded get-started-btn">Upgrade to PRO</a>
+                        </span>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0"><%= usercount%></h3>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                       
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-bold">Total User</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0"><%= productcount%></h3>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-bold">Total Product</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0"><%= categorycount%></h3>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-bold">Total Category</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0"><%=ordercount%></h3>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Total Orders</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                
+                </div>
+              </div>
+
+
+            
+        
+                <div class="main-panel">
+                  <div class="content-wrapper">
+                    <div class="row">
+                      <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                              <canvas id="barChart" style="max-height: 400px;"></canvas>
+                          <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                              new Chart(document.querySelector('#barChart'), {
+                                type: 'bar',
+                                data: {
+              
+                                  labels: ['<%=date[0]%>', '<%=date[1]%>', '<%=date[2]%>', '<%=date[3]%>', '<%=date[4]%>', '<%=date[5]%>', '<%=date[6]%>'],
+                                  datasets: [{
+                                    label: 'Daily sales',
+                                    data: ["<%=sales[0]%>","<%=sales[1]%>","<%=sales[2]%>","<%=sales[3]%>","<%=sales[4]%>","<%=sales[5]%>","<%=sales[6]%>"],
+              
+                                    backgroundColor: [
+                                      'rgba(255, 99, 132, 0.2)',
+                                      'rgba(255, 159, 64, 0.2)',
+                                      'rgba(255, 205, 86, 0.2)',
+                                      'rgba(75, 192, 192, 0.2)',
+                                      'rgba(54, 162, 235, 0.2)',
+                                      'rgba(153, 102, 255, 0.2)',
+                                      'rgba(201, 203, 207, 0.2)'
+                                    ],
+                                    borderColor: [
+                                      'rgb(255, 99, 132)',
+                                      'rgb(255, 159, 64)',
+                                      'rgb(255, 205, 86)',
+                                      'rgb(75, 192, 192)',
+                                      'rgb(54, 162, 235)',
+                                      'rgb(153, 102, 255)',
+                                      'rgb(201, 203, 207)'
+                                    ],
+                                    borderWidth: 1
+                                  }]
+                                },
+                                options: {
+                                  scales: {
+                                    y: {
+                                      beginAtZero: true
+                                    }
+                                  }
+                                }
+                              });
+                            });
+                          </script>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                          <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+                          <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                              new Chart(document.querySelector('#doughnutChart'), {
+                                
+                                type: 'doughnut',
+                                
+                                data: {
+                                  labels: [
+                                    'ONLINE',
+                                    'COD'
+                                  ],
+                
+                                  datasets: [{  
+                                    label: '',
+                                    data: ['<%=online%>','<%=cod%>'],
+                                    backgroundColor: [
+                                      'rgb(255, 99, 132)',
+                                      'rgb(54, 162, 235)',
+                                      'rgb(255, 205, 86)'
+                                    ],
+                                    hoverOffset: 4
+                                  }]
+                                }
+                              });
+                            });
+                          </script>
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  
+                </div>
+
+            </div>
+
+
+
+
+           
+            <div class="row ">
+              <div class="col-12 grid-margin">
+               
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+               
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+                
+              </div>
+              <div class="col-md-12 col-xl-4 grid-margin stretch-card">
+                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                   
+                    <div class="row">
+                   
+                      <div class="col-md-7">
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d4276.702071295139!2d76.15790846446824!3d10.598505608532632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smundur%20avanur!5e0!3m2!1sen!2sin!4v1680111675852!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
+              <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span> -->
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+
+<%- include("../layouts/adminFooter.ejs") %>

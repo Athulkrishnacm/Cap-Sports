@@ -1,0 +1,42 @@
+<%- include("../layouts/adminHeader.ejs")%>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Add Category</h4>
+        <p class="card-description"></p>
+        <form method="post" class="form-inline">
+          <label class="sr-only"  for="inlineFormInputName2">Category Name</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+            placeholder="category name" name="categoryName">
+         
+           
+          <div class="form-check mx-sm-2">
+           
+
+            <%if(message!=null){%>
+              <script>
+                
+            swal({
+                title: "alert",
+                text: "<%= message %>",
+                icon: "error",
+                button: "ok",
+              });
+            
+            
+  
+            </script>
+            <%}%>
+            
+            
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+
+<%- include("../layouts/adminFooter.ejs")%>

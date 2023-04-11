@@ -1,0 +1,246 @@
+
+<%- include('../layouts/registerHeader.ejs') %>
+
+ <div class="container-scroller p-5 col-lg-10 m-auto">
+    <!-- partial:../../partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        
+        <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <ul class="nav">
+    </nav>
+  
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+           
+           
+          <a href="/" style="margin-left: 60%;" class="btn btn-success m-3" >Go to Home</a>
+                
+            <!-- <div class="col-12 grid-margin"> -->
+              <div class="card">
+                <div class="card-body">
+                  <form class="form-sample" action="/adduserdetails" method="post">
+                    <p class="card-description"> Personal info </p>
+                   
+       
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">First Name</label>
+                          <div class="col-sm-9">
+                            <input name="FirstName" type="text" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Last Name</label>
+                          <div class="col-sm-9">
+                            <input name="LastName" type="text" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Gender</label>
+                          <div class="col-sm-9">
+                            <select class="form-control">
+                              <option>Male</option>
+                              <option>Female</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                       -->
+                    <div class="row">
+                      <!-- <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Category</label>
+                          <div class="col-sm-9">
+                            <select class="form-control">
+                              <option>Category1</option>
+                              <option>Category2</option>
+                              <option>Category3</option>
+                              <option>Category4</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Membership</label>
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="membershipRadios"
+                                  id="membershipRadios1" value="" checked> Free </label>
+                            </div>
+                          </div>
+                         
+                        </div>
+                      </div> -->
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Number</label>
+                          <div class="col-sm-9">
+                            <input type="number" name="Number" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Address </label>
+                          <div class="col-sm-9">
+                            <input type="text" name="Address" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">State</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="State" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input type="email" name="Email" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Pincode</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="Pincode" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Landmark</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="Landmark" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Country</label>
+                            <div class="col-sm-9">
+                              <input type="text" name="Country" class="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                   
+                      <div class="form-group">
+                        <button type="submit">Submit</button>  
+                      </div>
+
+                  </form>
+                </div>
+             
+            </div>
+          
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Number</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Pincode</th>
+                  <th scope="col">Landmark</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(userData){
+                  for(let i=0; i<userData.length; i++){ %>
+                <tr>
+                  <th scope="row"><%= i+1 %></th>
+                  <td> 
+                    <p><%=userData[i].firstName%></p>
+                    </td>
+                  <td>
+                    <p><%=userData[i].lastName%></p>
+                    </td>
+                  <td>
+                    <p><%=userData[i].number%></p>
+                    </td>
+                    <td>
+                     <p> <%=userData[i].address%></p>
+                      </td>
+                  <td>
+                    <p><%=userData[i].state%></p>
+                    </td>
+                  <td>
+                    <p><%=userData[i].email%></p>
+                    </td>
+                  <td>
+                    <p><%=userData[i].pincode%></p>
+                    </td>
+                  <td>
+                    <p><%=userData[i].landmark%></p>
+                    </td>
+                  <td>
+                    <p><%=userData[i].country%></p>
+                    </td>
+                    <td>
+                   <a href="/deleteaddressDetails?id=<%= userData[i]._id%>">Delete</a>
+                    </td>
+                  
+                </tr>
+                
+
+
+                <% } %>
+              <% } %>
+              </tbody>
+            </table>
+
+
+
+            
+
+              
+
+
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        
+        <!-- partial -->
+     
+      <!-- main-panel ends -->
+  
+    <!-- page-body-wrapper ends -->   
+ 
+  <!-- container-scroller -->
+
+
+
+<%- include('../layouts/registerFooter.ejs') %>

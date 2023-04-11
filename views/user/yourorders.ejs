@@ -1,0 +1,43 @@
+<%-include("../layouts/registerHeader.ejs")%>
+
+<a href="/" style="margin-left: 60%;" class="btn btn-success m-3" >Go to Home</a>
+<div class="container border">
+    
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Products</th>
+        <th scope="col">Date</th>
+        <th scope="col">Payment method</th>
+        <th scope="col">total</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% for(let i = 0;i<orders.length; i++) {%>
+      <tr>
+    
+        <th scope="row"><%= i+1 %></th>
+        <td><%= orders[i]._id%></td>
+        <td><%= orders[i].date.toISOString().substring(0,10)%></td>
+        <td><%= orders[i].paymentMethod%></td>
+        <td><%= orders[i].cartTotal%></td>
+        <td><%= orders[i].status%></td>
+        <td>
+            <a class="btn btn-success"  href="/cancel?id=<%= orders[i]._id%>">Cancel</a>
+        </td>
+      </tr>
+    <%}%>
+    </tbody>
+  </table>
+ 
+</div>
+
+
+
+
+
+
+  <%-include("../layouts/registerFooter.ejs")%>

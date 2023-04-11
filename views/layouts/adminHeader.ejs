@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cap Sports</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="*" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+
+  <body>
+    
+
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="/admin/dashboard"><img src="/assets/images/logo.png" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="/admin/dashboard"><img src="/assets/images/logo.png" alt="logo" /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="/assets/images/faces/adminlogcap.png" alt="">
+                 
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">ADMIN</h5>
+                  <span></span>
+                </div>
+              </div>
+              
+              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                
+                <div class="dropdown-divider"></div>
+               
+                <div class="dropdown-divider"></div>
+               
+              </div>
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/dashboard">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/user-list">
+              <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                </svg>
+              </span>
+              <span class="menu-title">User List</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/salesReport">
+              <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                </svg>
+              </span>
+              <span class="menu-title">Sales report</span>
+            </a>
+          </li>
+
+           <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+              </span>
+              <span class="menu-title">Product</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/add-product">Add Product</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html"></a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="/admin/product-list">Product List</a></li>
+              </ul>
+            </div>
+          </li> 
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+              </span>
+              <span class="menu-title">Category</span>
+              <i class="menu-arrow"></i>
+
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/add-category">Add Category</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html"></a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="/admin/category-list">Category LIst</a></li>
+              </ul>
+            </div>
+          </li> 
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+              </span>
+              <span class="menu-title">Banner</span>
+              <i class="menu-arrow"></i>
+
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/add-banner">Add Banner</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html"></a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="/admin/banner-list">Banner LIst</a></li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+              </span>
+              <span class="menu-title">Order</span>
+              <i class="menu-arrow"></i>
+
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/orderlist">Order list</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html"></a></li> -->
+                <!-- <li class="nav-item"> <a class="nav-link" href="/admin/banner-list">Banner LIst</a></li> -->
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+              </span>
+              <span class="menu-title">Coupon</span>
+              <i class="menu-arrow"></i>
+
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/add-coupon">Add Coupon</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/list-coupon">List Coupon</a></li>
+              </ul>
+            </div>
+          </li>
+         
+        </ul>
+      </nav>
+      <!-- partial -->

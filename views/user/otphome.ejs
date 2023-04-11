@@ -1,0 +1,130 @@
+
+
+
+<!--  -->
+<!-- <section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  
+                    <div class="container height-100 d-flex justify-content-center align-items-center">
+                        <div class="position-relative">
+                            <div class="card p-2 text-center">
+                                <h6>Please enter the one time password <br> to verify your account</h6>
+                                <div> <span>A code has been sent to</span> <small>***9897</small> </div>
+                                <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"> <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> </div>
+                                <div class="mt-4"> <button class="btn btn-danger px-4 validate">Validate</button> </div>
+                            </div>
+                        </div>
+                    </div>  
+
+                
+            
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                    class="img-fluid" alt="Sample image">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ -->
+
+
+
+ <%- include('../layouts/registerHeader.ejs') %>  
+
+
+  <section class="vh-100" style="background: linear-gradient(180deg, #f2d18472 0%, rgba(242, 209, 132, 0) 100%);
+  border-radius: 0px;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+       
+
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 8px 8px 8px 100px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+               
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    
+                    <div class="card p-2 text-center">
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+  
+                  <form action="/" method="post">
+                    <h6>Please enter the one time password <br> to verify your account</h6>
+                    <div> <span>A code has been sent to</span> <small><%= phone %></small> </div>
+                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2 in">
+                        <input name="otp"type="text" id="form3Example3cg" class="form-control form-control-lg" />
+                    </div>
+                    <% 
+                    if (typeof msg!== 'undefined') {%>
+                      <p style="color: red;"><%= msg %></p>
+                      <% } %>
+                    <div class="mt-4"> <button type="submit" class="btn btn-danger px-4 validate in">Validate</button> </div>
+                    
+                    </form>
+                    <div class="mt-4"> <a id="resend-link" style="cursor: pointer;" class="">Resend Otp </a><span id="timer"></span> </div>
+                </div>
+  
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2" style="background: linear-gradient(180deg, #F2D184 0%, rgba(242, 209, 132, 0) 100%)">
+  
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                    class="img-fluid image-verify" alt="Sample image">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+    let resendLink = document.getElementById('resend-link');
+    let timerElement = document.getElementById('timer');
+    let timer = 30; // Set the timer to 60 seconds
+
+    function startTimer() {
+        timer--;
+        if (timer >= 0) {
+            timerElement.innerHTML = `(${timer}s)`;
+            setTimeout(startTimer, 1000); // Call the function again after 1 second
+        } else {
+            resendLink.style.color = 'red'
+            resendLink.style.pointerEvents = 'auto'
+            timerElement.style.display = 'none'; // Hide the timer
+            timer = 60; // Reset the timer to 60 seconds
+        }
+    }
+
+    window.onload = () => {
+        resendLink.style.pointerEvents = 'none'; // Hide the resend link
+        resendLink.style.color = '#696969'
+        startTimer();
+
+    };
+
+    // Call the function to start the timer when the resend link is clicked
+    resendLink.addEventListener('click', () => {
+        resendLink.style.pointerEvents = 'none';
+        resendLink.style.color = '#696969'
+        timerElement.style.display = 'inline-block'; // Show the timer
+        startTimer();
+        // code to resend the OTP
+
+    });
+</script>
+  <%- include('../layouts/registerFooter.ejs') %>
+
+   <input class="m-2 text-center form-control rounded in"type="text" id="first" maxlength="1" name="otp" required/> <input class="m-2 text-center form-control rounded in" type="text" id="second" maxlength="1" name="otp" required/> <input class="m-2 text-center form-control rounded in" type="text" id="third" maxlength="1" name="otp"required/> <input class="m-2 text-center form-control rounded in" type="text" id="fourth" maxlength="1" name="otp" required/> <input class="m-2 text-center form-control rounded in" type="text" id="fifth" maxlength="1" name="otp">  

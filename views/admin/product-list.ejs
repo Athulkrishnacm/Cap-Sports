@@ -1,0 +1,76 @@
+
+<%- include("../layouts/adminHeader.ejs")  %>
+<div style="padding-right: 20%;">
+<div class="container mt-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>products Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Sale Price</th>
+          <th>Quantity</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <!-- <a href="/admin/dashboard">Go to Home</a> -->
+        <div style="position: sticky;">     
+             <form action="/admin/search-product"  class="form-inline my-2 my-lg-0 d-flex flex-row ms-auto">
+          <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+
+        <a style="padding-left: 70%; " href="/admin/add-product">Add New product</a>
+            <% if (products.length> 0) {
+                 for(let i=0;i<products.length;i++){ %>
+
+                <tr>
+                  
+                  <th scope="row"><%= i+1 %></th>
+                  
+                  <td>
+                    <%= products[i].Name%>
+                  </td>
+                  
+                  <td>
+                    <%= products[i].Category%>
+                  </td>
+                  <td>
+                    <%= products[i].Price%>
+                  </td>
+                  <td>
+                    <%= products[i].SalePrice%>
+                  </td>
+                 
+                  <td>
+                    <%= products[i].Stock%>
+                  </td>
+                  
+                  <td>
+                   <img src="/Images/<%= products[i].Images[0]%>" alt="" width="80px" height="80px" > 
+                  </td>
+                  <td>
+                    <% if(products[i].id_disable==false) {%>
+                  <a href="/admin/id_disable?id=<%= products[i]._id%>&id_disable=false" class="btn btn-danger">Block</a>
+                  <%}else{%>
+                    <a href="/admin/id_undisable?id=<%= products[i]._id%>&id_disable=true"
+                      class="btn btn-success">Unblock</a>
+                    <% } %>
+                   
+                      <a class="btn btn-success" href="/productsinglepage?id=<%= products[i]._id%>" >view</a>
+
+                      <a class="btn btn-outline-success" href="/admin/edit-product?id=<%= products[i]._id%>" >Edit</a>
+                      </td>
+               <% }%>
+            <%}%>   
+          </tbody>
+    </table>
+  </div>
+</div>
+
+  <%- include("../layouts/adminFooter.ejs")  %>

@@ -1,0 +1,144 @@
+<% include('../layouts/userHeader.ejs') %>
+
+
+
+<%  if (typeof message !== 'undefined') { %>
+    <h4><%= message %></h4> <%  } %>
+
+    <!-- <section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5" ;>
+              <h2 class="text-uppercase text-center mb-5" >Login</h2>
+
+              <form method="post" action="/login">
+
+               
+
+                <div class="form-outline mb-4">
+                  <input name="email"type="email" id="form3Example3cg" class="form-control form-control-lg" required />
+                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input  name="password"type="password" id="form3Example4cg" class="form-control form-control-lg" required />
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                </div>
+
+               
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">log in</button>
+                </div>
+              
+                
+                
+                    
+              </form>
+            
+              <div class="d-flex justify-content-center">
+                <button type="button"
+                  class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" ><a href="/forget">Forget Password</a></button>
+              </div>
+         
+              <div class="d-flex justify-content-center">
+                  <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><a href="/verification">Verification</a></button>
+                    
+                </div>
+             
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!-- </section> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cap Sport</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-4 mx-auto">
+              <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Login</h3>
+                <form method="post" action="/login">
+                  <div class="form-group">
+                    <label>email *</label>
+                    <input type="email" name="email" class="form-control p_input">
+                  </div>
+                  <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" name="password" class="form-control p_input">
+                  </div>
+                  <div class="form-group d-flex align-items-center justify-content-between">
+                    
+                    <a href="/forget" class="forgot-pass">Forgot password</a>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit"
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">log in</button>
+                  </div>
+                  
+                  <p class="sign-up">Don't have an Account?<a href="/register"> Sign Up</a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- row ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+  </body>
+</html>
+    
+
+
+
+
+
+
+<% include('../layouts/userFooter.ejs') %>
