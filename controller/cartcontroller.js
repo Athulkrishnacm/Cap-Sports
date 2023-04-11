@@ -151,20 +151,15 @@ const addcart = async (req, res) => {
 const listcart = async (req, res) => {
     try {
         if (req.session.user_id) {
-
-
             const user_id = req.session.user_id
             const userData = await User.findById({ _id: req.session.user_id })
             const cartproduct = await Cart.findOne({ userId: user_id }).populate("product.productId")
 
             if (cartproduct.product.length > 0) {
                 const totalPrice = cartproduct.product.map((product) => product.totalSalePrice).reduce((acc, cur) => acc += cur)
-
-
+                console.log(cartproduct.product)
                 res.render('cart', { cartproduct: cartproduct.product, user: userData, cartData: cartproduct, totalPrice,mes })
                 mes=null
-      
-          
             } else {
                 res.render('cart', { user: userData, mes })
                 mes = null
