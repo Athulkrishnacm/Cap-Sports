@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/user_managment")
+mongoose.connect("mongodb+srv://athulkrishnaappu7:1p71PPOHG6W3ps40@cluster0.lo0gdoy.mongodb.net/capSportsDB")
 
 
 const express = require("express")
