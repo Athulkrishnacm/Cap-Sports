@@ -27,13 +27,13 @@ const { response } = require('../router/adminRoute');
 const crypto = require('crypto');
 
 var instance = new Razorpay({
-    key_id: 'rzp_test_OKmIuCbgSZGaXh',
-    key_secret: 'CRzBfKPXjnfPCahhzCyqqan6',
+    key_id: process.env.RAZOR_KEYID,
+    key_secret: process.env.RAZOR_SECRET_KEY,
 });
 
-const TWILIO_SERVICE_SID = "VAfffbf1f166f5871d24ad4eadb93ef4a2";
-const accountsid = "AC572a09d99e3f47fa7a728a99895cc53b";
-const authtoken = "73fb0198f8dd8a9cf071d19f95b9e9fd";
+const TWILIO_SERVICE_SID = process.env.TWILIO_SERVICE_ID ;
+const accountsid = process.env.TWILIO_ACCOUNT_ID;
+const authtoken = process.env.TWILIO_AUTHTOKEN;
 const client = require("twilio")(accountsid, authtoken);
 
 let mes
