@@ -35,9 +35,9 @@ const verifyLogin = async (req, res) => {
 
                 if (userData.is_admin == 0) {
                     res.render('adminlogin', { message: "Email and password is incorrect." })
-                    res.send('hhhhhh')
+
                 } else {
-                    req.session.user_id = userData._id
+                    req.session.admin_id = userData._id
                     res.redirect("/admin/dashboard")
                 }
 
@@ -56,7 +56,7 @@ const verifyLogin = async (req, res) => {
 //////////admin dashboard //////////////////////////////
 const loadDashboard = async (req, res) => {
     try {
-        const userData =await User.findById({ _id: req.session.user_id })
+        const userData =await User.findById({ _id: req.session.admin_id })
         const usercount = await User.countDocuments({is_admin:0})
         const productcount = await Product.countDocuments({})
         const categorycount = await Category.countDocuments({})
