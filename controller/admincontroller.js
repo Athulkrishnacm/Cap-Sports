@@ -445,9 +445,10 @@ const adminproductsinglepage = async (req, res) => {
 
 const orderlist = async (req, res) => {
     try {
-        const orders = await Order.find({}).sort({ _id: -1 })
-        res.render('orderlist', { orders })
-        // console.log(orders);
+        const orders = await Order.find({}).populate("productData.productId").sort({ _id: -1 })
+        
+        res.render('orderlist', { orders})
+        console.log(orders);
     } catch (error) {
         console.log(error.message);
     }

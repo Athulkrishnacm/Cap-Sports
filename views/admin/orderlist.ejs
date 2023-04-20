@@ -21,7 +21,7 @@
           <tr>
         
             <th scope="row"><%= i+1 %></th>
-            <td><%= orders[i]._id%></td>
+            <td><%= orders[i]._id%> <br><%= orders[i].productData[0].productId.Name%> </td>
             <td><%= orders[i].date.toISOString().substring(0,10)%></td>
             <td><%= orders[i].paymentMethod%></td>
             <td><%= orders[i].cartTotal%></td>
@@ -38,12 +38,6 @@
                     </ul>
                   </div>
             </td>
-
-           
-            
-              
-
-
           </tr>
         <%}%>
         </tbody>
