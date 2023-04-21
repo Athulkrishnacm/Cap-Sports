@@ -31,7 +31,7 @@ var instance = new Razorpay({
     key_secret: process.env.RAZOR_SECRET_KEY,
 });
 
-const TWILIO_SERVICE_SID = process.env.TWILIO_SERVICE_ID ;
+const TWILIO_SERVICE_SID = process.env.TWILIO_SERVICE_ID;
 const accountsid = process.env.TWILIO_ACCOUNT_ID;
 const authtoken = process.env.TWILIO_AUTHTOKEN;
 const client = require("twilio")(accountsid, authtoken);
@@ -408,22 +408,22 @@ const productCategory = async (req, res) => {
         }
         const category = await Category.find()
         let productData;
-         if(req.query.category){
-            productData = await Product.find({ id_disable: false, Category: req.query.category}).limit(6).skip((page - 1) *6).exec()
+        if (req.query.category) {
+            productData = await Product.find({ id_disable: false, Category: req.query.category }).limit(6).skip((page - 1) * 6).exec()
 
-             count = await Product.find({id_disable: false,Category: req.query.category }).countDocuments()
-         }else{
-            productData = await Product.find({ id_disable: false }).limit(6).skip((page - 1) *6).exec()
-             count = await Product.find({ id_disable: false }).countDocuments()
-         }
+            count = await Product.find({ id_disable: false, Category: req.query.category }).countDocuments()
+        } else {
+            productData = await Product.find({ id_disable: false }).limit(6).skip((page - 1) * 6).exec()
+            count = await Product.find({ id_disable: false }).countDocuments()
+        }
 
         const userData = await User.findOne({ _id: req.session.user_id })
         if (userData) {
-            res.render('productcategory', { product: productData, user: userData,category,mess,totalPages: Math.ceil(count / 6)})
-            mess=null
-            
+            res.render('productcategory', { product: productData, user: userData, category, mess, totalPages: Math.ceil(count / 6) })
+            mess = null
+
         } else {
-            res.render('productcategory', { product: productData, category ,mess,totalPages: Math.ceil(count/6)})
+            res.render('productcategory', { product: productData, category, mess, totalPages: Math.ceil(count / 6) })
         }
     } catch (error) {
         console.log(error.message);
@@ -432,12 +432,12 @@ const productCategory = async (req, res) => {
 
 //find category product
 
-const findCategory = async(req,res)=>{
-   try {
-    console.log(req.params.category);
-   } catch (error) {
-    console.log(error.message);
-   }
+const findCategory = async (req, res) => {
+    try {
+        console.log(req.params.category);
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 //product search by user
@@ -445,7 +445,7 @@ const findCategory = async(req,res)=>{
 const productsearchuser = async (req, res) => {
     try {
         const category = await Category.find({})
-       let totalPages=0;
+        let totalPages = 0;
         var search = '';
         if (req.query.search) {
             search = req.query.search;
@@ -455,8 +455,8 @@ const productsearchuser = async (req, res) => {
                 { Name: { $regex: '.*' + req.body.search + '.*', $options: 'i' } }
             ]
         })
-        res.render('productcategory', { product: productData,category,totalPages,mess})
-        mess=null
+        res.render('productcategory', { product: productData, category, totalPages, mess })
+        mess = null
     } catch (error) {
         console.log(error.message);
     }
@@ -534,7 +534,7 @@ const loadCheckout = async (req, res) => {
     try {
         const user_id = req.session.user_id;
         const code = req.body.code;
-        req.session.couponstatus=false
+        req.session.couponstatus = false
         const userData = await User.findOne({ _id: user_id })
         const checkout = await Cart.findOne({ userId: user_id }).populate("product.productId")
         const data = userData.address.filter(address => address.is_disable === false);
@@ -547,12 +547,12 @@ const loadCheckout = async (req, res) => {
                     .then((coupon) => {
                         if (coupon.Type === "Flat" && coupon.MinOrdervalue < totalPrice) {
                             totalPrice = totalPrice - coupon.Value
-                            req.session.couponstatus=true
-                            req.session.totalPrice=totalPrice
+                            req.session.couponstatus = true
+                            req.session.totalPrice = totalPrice
                         } else if (coupon.Type === "Percentage" && coupon.MinOrdervalue < totalPrice) {
                             totalPrice = totalPrice - ((totalPrice * coupon.Value) / 100)
-                            req.session.couponstatus=true
-                            req.session.totalPrice=totalPrice
+                            req.session.couponstatus = true
+                            req.session.totalPrice = totalPrice
                         }
                         res.json({ success: coupon })
                     })
@@ -572,8 +572,7 @@ const loadorders = async (req, res) => {
     try {
         const user_id = req.session.user_id
         const userData = await User.findById({ _id: req.session.user_id })
-        const orders = await Order.find({ userId: user_id }).populate("product.productId")
-
+        const orders = await Order.findOne({ userId: user_id }).populate("product.productId")
         if (orders.product) {
             const totalPrice = orders.product.map((product) => product.totalSalePrice).reduce((sum, product) => sum += product);
             res.render('order', { orders: orders.product, user: userData, cartData: checkout, totalPrice });
@@ -590,10 +589,10 @@ const loadorders = async (req, res) => {
 //place order page
 const placeorder = async (req, res) => {
     try {
-        const{id}=req.params
+        const { id } = req.params
 
         const user_id = req.session.user_id
-        const orders = await Order.find({_id :id})
+        const orders = await Order.find({ _id: id })
         const order = orders[orders.length - 1]
         const orderDetails = await Order.find()
         const userData = await User.findById({ _id: req.session.user_id })
@@ -601,7 +600,7 @@ const placeorder = async (req, res) => {
         const totalPrice = orders[0].cartTotal
 
         await Cart.deleteOne({ userId: req.session.user_id })
-        res.render('order', { cartData, totalPrice ,order,user: userData});
+        res.render('order', { cartData, totalPrice, order, user: userData });
 
     } catch (error) {
         console.log(error.message);
@@ -638,186 +637,189 @@ const orderSave = async (req, res) => {
         let totalPrice = cartProducts.reduce((total, product) => {
             return total += product.totalSalePrice
         }, 0)
-        if(req.session.couponstatus){
-         totalPrice = req.session.totalPrice
+        if (req.session.couponstatus) {
+            totalPrice = req.session.totalPrice
 
         }
-
+        
         // console.log("asdf")
-        console.log(req.body)
-        const order = new Order({
-            userId: req.session.user_id,
-            productData: cartProducts,
-            paymentMethod: req.body.paymentMethod,
-            addresId: req.body.address,
-            cartTotal: totalPrice,
-            paymentStatus: "Paid",
-            status: "Placed"
-        })
-        const orderSave = await order.save()
+        let order;
+        
+            order = new Order({
+                userId: req.session.user_id,
+                productData: cartProducts,
+                paymentMethod: req.body.paymentMethod,
+                addresId: req.body.address,
+                cartTotal: totalPrice,
+                paymentStatus: "Paid",
+                status: "Placed"
+            })
+            const orderSave = await order.save()
+      
+
 
         if (order.paymentMethod == "RazorPay") {
             instance.orders.create({
                 amount: parseInt(totalPrice) * 100,
                 currency: "INR",
-                receipt: orderSave._id.toString()
+                receipt: order._id.toString()
             }).then((order) => {
                 console.log(" Inn");
-                res.json({ order: order,id:orderSave._id})
+                res.json({ order: order, id: orderSave._id })
             })
         } else {
-            // console.log("cod")
-            res.json({ success: true })
+             console.log(orderSave)
+            res.json({ success: true ,id: orderSave._id})
         }
-            
-        } catch (error) {
-            console.log(error.message);
-        }
+
+    } catch (error) {
+        console.log(error.message,"msg");
     }
+}
 
 //your orders
 
 const YourOrder = async (req, res) => {
-        try {
-            const user_id = req.session.user_id;
-            const userData = await User.findOne({ _id: user_id })
-            const orders = await Order.find({ userId: user_id }).sort({_id:-1})
-            res.render('yourorders', { orders })
-        } catch (error) {
-            console.log(error.message);
-        }
+    try {
+        const user_id = req.session.user_id;
+        const userData = await User.findOne({ _id: user_id })
+        const orders = await Order.find({ userId: user_id }).populate("productData.productId").sort({ _id: -1 })
+        res.render('yourorders', { orders })
+    } catch (error) {
+        console.log(error.message);
     }
+}
 
-    const ordercancel = async (req, res) => {
-        try {
-            const id = req.query.id
-            await Order.deleteOne({ _id: id })
-            res.redirect('/yourorders')
-        } catch (error) {
-            console.log(error.message);
-        }
+const ordercancel = async (req, res) => {
+    try {
+        const id = req.query.id
+        await Order.deleteOne({ _id: id })
+        res.redirect('/yourorders')
+    } catch (error) {
+        console.log(error.message);
     }
+}
 
 //verify payment
 
-    const verifyPayment = async (req, res, next) => {
-        try {
-            const { order, payment } = req.body;
-            let hmac = crypto.createHmac('sha256', 'CRzBfKPXjnfPCahhzCyqqan6')
-            hmac.update(payment.razorpay_order_id + '|' + payment.razorpay_payment_id)
-            hmac = hmac.digest("hex")
-
-            if (hmac == payment.razorpay_signature) {
-               let orderStatus= await Order.findOneAndUpdate({ _id: order.receipt }, {
-                    $set: {
-                        paymentStatus: 'Payed'
-                    }
-                },{new:true})
-
-                res.json({ success: true,id:orderStatus._id })
-            } else {
-                await Order.updateOne({ _id: order.receipt }, {
-                    $set: {
-                        paymentStatus: 'Failed'
-                    }
-                })
-
-                res.json({ success: false })
-            }
-        } catch (error) {
-            next(error)
-        }
-    }
-
-    //contact page
-
-   const contact =async(req,res)=>{
-      try {
-        const userData = await User.findById({ _id: req.session.user_id })
-        res.render('contact',{user:userData})
-      } catch (error) {
-        console.log(error.message);
-      }
-   }
-   
-
-
-
-   const productFilter = async (req, res) => {
+const verifyPayment = async (req, res, next) => {
     try {
-      let product;
-      let products = [];
-      let Categorys;
-      let Data = [];
-      let Datas = [];
-  
-      const { categorys } = req.body;
-  
+        const { order, payment } = req.body;
+        let hmac = crypto.createHmac('sha256', 'CRzBfKPXjnfPCahhzCyqqan6')
+        hmac.update(payment.razorpay_order_id + '|' + payment.razorpay_payment_id)
+        hmac = hmac.digest("hex")
+
+        if (hmac == payment.razorpay_signature) {
+            let orderStatus = await Order.findOneAndUpdate({ _id: order.receipt }, {
+                $set: {
+                    paymentStatus: 'Payed'
+                }
+            }, { new: true })
+
+            res.json({ success: true, id: orderStatus._id })
+        } else {
+            await Order.updateOne({ _id: order.receipt }, {
+                $set: {
+                    paymentStatus: 'Failed'
+                }
+            })
+
+            res.json({ success: false })
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+//contact page
+
+const contact = async (req, res) => {
+    try {
+        const userData = await User.findById({ _id: req.session.user_id })
+        res.render('contact', { user: userData })
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
+
+
+const productFilter = async (req, res) => {
+    try {
+        let product;
+        let products = [];
+        let Categorys;
+        let Data = [];
+        let Datas = [];
+
+        const { categorys } = req.body;
+
         console.log(req.body);
-      
+
         product = await Product.find({});
         console.log(product);
-      Categorys = categorys.filter((value) => {
-        return value !== null;
-      });
-      console.log("okok");
-      console.log(Categorys[0]+"nnnnnnnnnnnnn",Categorys);
-      if (Categorys[0]) {
-        Categorys.forEach((element, i) => {
-          products[i]= product.filter((value) => {
-            return value.Category== element;
-          });
+        Categorys = categorys.filter((value) => {
+            return value !== null;
         });
-        console.log("hmmm");
-        
-  
-       
-      }
-      Data=products
-      console.log(products);
-      console.log(Data);
-      res.json({ Data });
+        console.log("okok");
+        console.log(Categorys[0] + "nnnnnnnnnnnnn", Categorys);
+        if (Categorys[0]) {
+            Categorys.forEach((element, i) => {
+                products[i] = product.filter((value) => {
+                    return value.Category == element;
+                });
+            });
+            console.log("hmmm");
+
+
+
+        }
+        Data = products
+        console.log(products);
+        console.log(Data);
+        res.json({ Data });
     } catch (error) {
-      console.log(error.message);
+        console.log(error.message);
     }
-  };
+};
 
 
 
-    module.exports = {
-        loadRegister,
-        insertUser,
-        verifyMail,
-        loginLoad,
-        verifyLogin,
-        loadHome,
-        userLogout,
-        forgetLoad,
-        forgetVerify,
-        forgetPasswordLoad,
-        resetPassword,
-        verificationLoad,
-        securePassword,
-        verifyotp,
-        verifyotpnumber,
-        productCategory,
-        loaduserAddress,
-        loadCheckout,
-        loadorders,
-        addaddressDetails,
-        listUserAddress,
-        productsinglepage,
-        deleteaddressDetails,
-        placeorder,
-        orderSave,
-        YourOrder,
-        ordercancel,
-        verifyPayment,
-        findCategory,
-        contact,
-        productsearchuser,
-        productFilter
-    }
+module.exports = {
+    loadRegister,
+    insertUser,
+    verifyMail,
+    loginLoad,
+    verifyLogin,
+    loadHome,
+    userLogout,
+    forgetLoad,
+    forgetVerify,
+    forgetPasswordLoad,
+    resetPassword,
+    verificationLoad,
+    securePassword,
+    verifyotp,
+    verifyotpnumber,
+    productCategory,
+    loaduserAddress,
+    loadCheckout,
+    loadorders,
+    addaddressDetails,
+    listUserAddress,
+    productsinglepage,
+    deleteaddressDetails,
+    placeorder,
+    orderSave,
+    YourOrder,
+    ordercancel,
+    verifyPayment,
+    findCategory,
+    contact,
+    productsearchuser,
+    productFilter
+}
 
 
 
