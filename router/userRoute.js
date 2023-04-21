@@ -79,7 +79,7 @@ user_route.post('/coupon',usercontroller.loadCheckout)
 
 user_route.get('/order',auth.isLogin,usercontroller.loadorders)
 
-user_route.get('/placeorder',auth.isLogin,usercontroller.placeorder)
+user_route.get('/placeorder/:id',auth.isLogin,usercontroller.placeorder)
 
 user_route.post('/verifyPayment',usercontroller.verifyPayment)
 

@@ -448,7 +448,7 @@ const orderlist = async (req, res) => {
         const orders = await Order.find({}).populate("productData.productId").sort({ _id: -1 })
         
         res.render('orderlist', { orders})
-        console.log(orders);
+      
     } catch (error) {
         console.log(error.message);
     }

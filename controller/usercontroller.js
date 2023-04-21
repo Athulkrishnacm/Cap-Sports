@@ -534,6 +534,7 @@ const loadCheckout = async (req, res) => {
     try {
         const user_id = req.session.user_id;
         const code = req.body.code;
+        req.session.couponstatus=false
         const userData = await User.findOne({ _id: user_id })
         const checkout = await Cart.findOne({ userId: user_id }).populate("product.productId")
         const data = userData.address.filter(address => address.is_disable === false);
@@ -546,8 +547,12 @@ const loadCheckout = async (req, res) => {
                     .then((coupon) => {
                         if (coupon.Type === "Flat" && coupon.MinOrdervalue < totalPrice) {
                             totalPrice = totalPrice - coupon.Value
+                            req.session.couponstatus=true
+                            req.session.totalPrice=totalPrice
                         } else if (coupon.Type === "Percentage" && coupon.MinOrdervalue < totalPrice) {
                             totalPrice = totalPrice - ((totalPrice * coupon.Value) / 100)
+                            req.session.couponstatus=true
+                            req.session.totalPrice=totalPrice
                         }
                         res.json({ success: coupon })
                     })
@@ -585,13 +590,15 @@ const loadorders = async (req, res) => {
 //place order page
 const placeorder = async (req, res) => {
     try {
+        const{id}=req.params
+
         const user_id = req.session.user_id
-        const orders = await Order.find({userId :req.session.user_id})
+        const orders = await Order.find({_id :id})
         const order = orders[orders.length - 1]
         const orderDetails = await Order.find()
         const userData = await User.findById({ _id: req.session.user_id })
         const cartData = await Cart.findOne({ userId: user_id }).populate("product.productId")
-        const totalPrice = cartData.product.map((product) => product.totalSalePrice).reduce((acc, cur) => acc += cur)
+        const totalPrice = orders[0].cartTotal
 
         await Cart.deleteOne({ userId: req.session.user_id })
         res.render('order', { cartData, totalPrice ,order,user: userData});
@@ -628,9 +635,14 @@ const orderSave = async (req, res) => {
     try {
         const cartData = await Cart.findOne({ userId: req.session.user_id })
         const cartProducts = cartData.product;
-        const totalPrice = cartProducts.reduce((total, product) => {
+        let totalPrice = cartProducts.reduce((total, product) => {
             return total += product.totalSalePrice
         }, 0)
+        if(req.session.couponstatus){
+         totalPrice = req.session.totalPrice
+
+        }
+
         // console.log("asdf")
         console.log(req.body)
         const order = new Order({
@@ -651,7 +663,7 @@ const orderSave = async (req, res) => {
                 receipt: orderSave._id.toString()
             }).then((order) => {
                 console.log(" Inn");
-                res.json({ order: order})
+                res.json({ order: order,id:orderSave._id})
             })
         } else {
             // console.log("cod")
@@ -696,13 +708,13 @@ const YourOrder = async (req, res) => {
             hmac = hmac.digest("hex")
 
             if (hmac == payment.razorpay_signature) {
-                await Order.updateOne({ _id: order.receipt }, {
+               let orderStatus= await Order.findOneAndUpdate({ _id: order.receipt }, {
                     $set: {
                         paymentStatus: 'Payed'
                     }
-                })
+                },{new:true})
 
-                res.json({ success: true })
+                res.json({ success: true,id:orderStatus._id })
             } else {
                 await Order.updateOne({ _id: order.receipt }, {
                     $set: {
