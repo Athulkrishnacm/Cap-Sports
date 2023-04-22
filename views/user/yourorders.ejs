@@ -30,9 +30,15 @@
         <td><%= orders[i].paymentMethod%></td>
         <td><%= orders[i].cartTotal%></td>
         <td><%= orders[i].status%></td>
-        <td>
-            <a class="btn btn-success"  href="/cancel?id=<%= orders[i]._id%>">Cancel</a>
+        <% if(orders[i].status == "Delivered"){ %>
+          <td>
+            <a class="btn btn-success"  >Delivered</a>
         </td>
+        <%}else{%>
+        <td>
+            <a class="btn btn-danger"  href="/cancel?id=<%= orders[i]._id%>">Cancel</a>
+        </td>
+        <%}%>
       </tr>
     <%}%>
     </tbody>
